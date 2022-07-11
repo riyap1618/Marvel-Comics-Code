@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Marvel Character Information{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1 class="display-4">Marvel Character Information</h1>
+  </div>
+
+  <form action="{{ url_for("getInfo") }}" method="post" class="form">
+    <div class="form">
+        <br><label for="name">Name of character: </label>
+        <input type="text" name="name" required>
+    </div>
+    <div class="form">
+        <input type="submit" value="Submit!">
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Items</h2>
+      <ul class="list-group mb-4">
+        <li>{{ info.id }}</li>
+      <table>
+      <tr>
+        <th>Title</th>
+      </tr>
+          {% for item in listOfItems %}
+            <tr>
+                <td>{{ item.title }}</td>
+            </tr>
+          {% endfor %}
+      </table>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}
